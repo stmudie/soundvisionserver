@@ -12,3 +12,4 @@ localconfig.py
 env/
 #subpackage
 yamaha/
+pyplayshow/
