@@ -7,7 +7,7 @@ import subprocess
 class Soundvisionserver:
     def __init__(self):
         self.input = 'V-AUX'
-	self.changedelay = 2 
+        self.changedelay = 2 
         self.soundpath = '/root/'
         self.p = pyplayshow()
         self.r = redis.StrictRedis(host='localhost', port=6379, db=0)
@@ -15,14 +15,14 @@ class Soundvisionserver:
         while True:
             command = (self.r.brpop('soundvision:queue'))[1].split('#')
             if len(command) > 1:
-		message, sound = command
+                message, sound = command
             else :
                 message = command[0]
                 sound = ''
             if message[0] == '@':
                 self.command(message[1:],sound,video=True)
             else:
-	        self.command(message, sound)
+                self.command(message, sound)
             
     def command(self,message, sound, video=False):
         y = yamaha(config='yamaha/config.yml')
